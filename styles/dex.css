@@ -53,6 +53,7 @@ h6 {
   height: 100px;
   background-repeat: no-repeat;
   background-position: center;
+  pointer-events:;
 }
 .list {
   text-align: center;

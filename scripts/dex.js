@@ -1,6 +1,11 @@
 import { mons } from "../data/mons.js";
 
 let dexHTML = ``;
+let typeHTML = ``;
+let weaknessHTML = ``;
+let moveHTML = ``;
+let abilityHTML = ``;
+let evoHTML = ``;
 mons.forEach((mon) => {
   dexHTML += `
   <h2>${mon.Name} ${mon.id}</h2>
@@ -8,20 +13,23 @@ mons.forEach((mon) => {
     <div>
       <h3>Normale</h3>
       <div class="container-sprite">
-        <img src=../${mon.Icons.normal}>
+        <img src=${mon.Icons.normal}>
       </div>
     </div>
     <div>
       <h3>Shiny</h3>
       <div class="container-sprite">
-        <img src=../${mon.Icons.shiny}>
+        <img src=${mon.Icons.shiny}>
       </div>
     </div>
     <div>
       <h3>Tipo:</h3>
-      <ul class="list">
-        <li>${mon.Types[0]}</li>
-        <li>${mon.Types[1]}</li>
+      <ul class="list types">
+        ${mon.Types.forEach((type) => {
+          typeHTML += `
+          <li>${type}</li>
+          `;
+        })}
       </ul>
       <h3>Debolezze:</h3>
       <ul class="list">
@@ -54,6 +62,11 @@ mons.forEach((mon) => {
         <li>${mon.Moves[12]}</li>
         <li>${mon.Moves[13]}</li>
         <li>${mon.Moves[14]}</li>
+        <li>${mon.Moves[15]}</li>
+        <li>${mon.Moves[16]}</li>
+        <li>${mon.Moves[17]}</li>
+        <li>${mon.Moves[18]}</li>
+        <li>${mon.Moves[19]}</li>
       </ul>
     </div>
     <div>
@@ -65,11 +78,11 @@ mons.forEach((mon) => {
     </div>
     <div class="evolution-chain-container">
       <div class="evolution-chain">
-        <img src=../${mon.Evolution[0]}>
+        <img src=${mon.Evolution[0]}>
         &rarr;
-        <img src=../${mon.Evolution[1]}>
+        <img src=${mon.Evolution[1]}>
         &rarr;
-        <img src=../${mon.Evolution[2]}>
+        <img src=${mon.Evolution[2]}>
       </div>
     </div>
   </div>
@@ -77,3 +90,4 @@ mons.forEach((mon) => {
 });
 
 document.querySelector(`.mons`).innerHTML = dexHTML;
+document.querySelector(`.types`).innerHTML = typeHTML;
